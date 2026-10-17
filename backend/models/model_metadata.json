@@ -1,0 +1,176 @@
+{
+  "model_name": "JalaRakshak AI Hydrological Random Forest Classifier",
+  "model_file": "flood_rf_pipeline.joblib",
+  "pipeline_steps": [
+    "imputer (median)",
+    "scaler (standard)",
+    "classifier (RandomForest)"
+  ],
+  "dataset_source": "SYNTHETIC URBAN HYDROLOGY DATASET (DEMO ONLY)",
+  "is_demo_only": true,
+  "demo_disclaimer": "DEMO ONLY: This model was trained on a synthetic dataset for demonstration of the ML pipeline and engineering verification. It is NOT validated for real-world municipal emergency operations or live disaster management.",
+  "causality_disclaimer": "Feature importance metrics reflect associative predictive power within this Random Forest architecture on the given dataset. They describe statistical correlation and predictive utility, and do NOT establish physical or hydrological causation.",
+  "training_timestamp_utc": "2026-10-17T17:00:49.755084+00:00",
+  "train_samples": 1600,
+  "test_samples": 400,
+  "target_column": "flood_occurred",
+  "classes": [
+    0,
+    1
+  ],
+  "class_labels": {
+    "0": "No Flood",
+    "1": "Flood Occurred"
+  },
+  "features": [
+    {
+      "name": "rainfall_3h_mm",
+      "type": "float",
+      "unit": "mm",
+      "description": "Short-duration precipitation accumulated over the preceding 3 hours",
+      "min": 0.0,
+      "max": 300.0
+    },
+    {
+      "name": "rainfall_24h_mm",
+      "type": "float",
+      "unit": "mm",
+      "description": "Antecedent cumulative precipitation over the preceding 24 hours",
+      "min": 0.0,
+      "max": 600.0
+    },
+    {
+      "name": "soil_saturation_pct",
+      "type": "float",
+      "unit": "%",
+      "description": "Antecedent surface soil saturation percentage",
+      "min": 0.0,
+      "max": 100.0
+    },
+    {
+      "name": "drainage_capacity_pct",
+      "type": "float",
+      "unit": "%",
+      "description": "Stormwater drainage network clearance & operability percentage",
+      "min": 0.0,
+      "max": 100.0
+    },
+    {
+      "name": "elevation_m",
+      "type": "float",
+      "unit": "m",
+      "description": "Mean terrain elevation of the catchment zone above sea level",
+      "min": 0.0,
+      "max": 100.0
+    },
+    {
+      "name": "tide_level_m",
+      "type": "float",
+      "unit": "m",
+      "description": "Downstream coastal / estuary tide height creating backflow resistance",
+      "min": 0.0,
+      "max": 5.0
+    },
+    {
+      "name": "impervious_surface_pct",
+      "type": "float",
+      "unit": "%",
+      "description": "Impervious surface ratio preventing natural rainwater infiltration",
+      "min": 0.0,
+      "max": 100.0
+    }
+  ],
+  "feature_order": [
+    "rainfall_3h_mm",
+    "rainfall_24h_mm",
+    "soil_saturation_pct",
+    "drainage_capacity_pct",
+    "elevation_m",
+    "tide_level_m",
+    "impervious_surface_pct"
+  ],
+  "evaluation_metrics": {
+    "accuracy": 0.8625,
+    "precision": 0.8532,
+    "recall": 0.9227,
+    "f1_score": 0.8866,
+    "roc_auc": 0.9487,
+    "confusion_matrix": {
+      "true_negative": 130,
+      "false_positive": 37,
+      "false_negative": 18,
+      "true_positive": 215
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.8783783783783784,
+        "recall": 0.7784431137724551,
+        "f1-score": 0.8253968253968254,
+        "support": 167.0
+      },
+      "1": {
+        "precision": 0.8531746031746031,
+        "recall": 0.9227467811158798,
+        "f1-score": 0.8865979381443299,
+        "support": 233.0
+      },
+      "accuracy": 0.8625,
+      "macro avg": {
+        "precision": 0.8657764907764908,
+        "recall": 0.8505949474441674,
+        "f1-score": 0.8559973817705776,
+        "support": 400.0
+      },
+      "weighted avg": {
+        "precision": 0.8636971793221793,
+        "recall": 0.8625,
+        "f1-score": 0.8610464735722467,
+        "support": 400.0
+      }
+    }
+  },
+  "feature_importances": [
+    {
+      "feature": "elevation_m",
+      "gini_importance": 0.2001,
+      "permutation_importance_mean": 0.109,
+      "permutation_importance_std": 0.0175
+    },
+    {
+      "feature": "rainfall_3h_mm",
+      "gini_importance": 0.2235,
+      "permutation_importance_mean": 0.085,
+      "permutation_importance_std": 0.0193
+    },
+    {
+      "feature": "drainage_capacity_pct",
+      "gini_importance": 0.1567,
+      "permutation_importance_mean": 0.0743,
+      "permutation_importance_std": 0.014
+    },
+    {
+      "feature": "soil_saturation_pct",
+      "gini_importance": 0.1269,
+      "permutation_importance_mean": 0.0685,
+      "permutation_importance_std": 0.0087
+    },
+    {
+      "feature": "rainfall_24h_mm",
+      "gini_importance": 0.1911,
+      "permutation_importance_mean": 0.062,
+      "permutation_importance_std": 0.008
+    },
+    {
+      "feature": "impervious_surface_pct",
+      "gini_importance": 0.0575,
+      "permutation_importance_mean": 0.0108,
+      "permutation_importance_std": 0.0081
+    },
+    {
+      "feature": "tide_level_m",
+      "gini_importance": 0.0442,
+      "permutation_importance_mean": 0.0015,
+      "permutation_importance_std": 0.007
+    }
+  ]
+}
