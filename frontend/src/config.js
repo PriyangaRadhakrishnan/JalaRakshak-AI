@@ -12,7 +12,9 @@ export const API_BASE_URL = (
 export const APP_CONFIG = {
   appName: 'JalaRakshak AI',
   tagline: 'Local Urban Flood-Risk Prediction & Community Alert System',
-  phase: 'Phase 1 - Project Foundation',
+  phase: 'Phase 4 - Complete Integrated System',
   apiHealthEndpoint: `${API_BASE_URL}/api/health`,
   refreshIntervalMs: 30000,
+  defaultMapCenter: [13.0827, 80.2707], // Central urban basin (Chennai coordinates demo)
+  defaultMapZoom: 12,
 };

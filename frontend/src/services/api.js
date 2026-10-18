@@ -19,7 +19,6 @@ export async function checkBackendHealth() {
       headers: {
         'Accept': 'application/json',
       },
-      // Timeout after 5 seconds to prevent hanging requests
       signal: AbortSignal.timeout(5000)
     });
 
@@ -60,4 +59,108 @@ export async function checkBackendHealth() {
       data: null,
     };
   }
+}
+
+/**
+ * Fetches model evaluation metrics and feature specifications from GET /api/metrics
+ */
+export async function fetchModelMetrics() {
+  const endpoint = `${API_BASE_URL}/api/metrics`;
+  const response = await fetch(endpoint, {
+    method: 'GET',
+    headers: { 'Accept': 'application/json' },
+    signal: AbortSignal.timeout(6000),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => ({}));
+    throw new Error(errorBody.message || `HTTP ${response.status}: Failed to load metrics`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Retrieves community waterlogging reports from GET /api/reports
+ * Supports optional severity filter and limit.
+ */
+export async function fetchReports({ severity, limit = 50 } = {}) {
+  const url = new URL(`${API_BASE_URL}/api/reports`);
+  if (severity && severity !== 'all') {
+    url.searchParams.set('severity', severity);
+  }
+  if (limit) {
+    url.searchParams.set('limit', String(limit));
+  }
+
+  const response = await fetch(url.toString(), {
+    method: 'GET',
+    headers: { 'Accept': 'application/json' },
+    signal: AbortSignal.timeout(6000),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => ({}));
+    throw new Error(errorBody.message || `HTTP ${response.status}: Failed to retrieve reports`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Submits a new citizen flood / waterlogging report to POST /api/reports
+ */
+export async function submitReport(reportData) {
+  const endpoint = `${API_BASE_URL}/api/reports`;
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify(reportData),
+    signal: AbortSignal.timeout(8000),
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    const errorMsg = data.errors
+      ? data.errors.join(' ')
+      : (data.message || `HTTP ${response.status}: Submission rejected`);
+    const error = new Error(errorMsg);
+    error.details = data;
+    throw error;
+  }
+
+  return data;
+}
+
+/**
+ * Runs Random Forest inference via POST /api/predict
+ */
+export async function predictFloodRisk(inputFeatures) {
+  const endpoint = `${API_BASE_URL}/api/predict`;
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify(inputFeatures),
+    signal: AbortSignal.timeout(8000),
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    const errorMsg = data.errors
+      ? data.errors.join(' ')
+      : (data.message || `HTTP ${response.status}: Model inference failed`);
+    const error = new Error(errorMsg);
+    error.details = data;
+    throw error;
+  }
+
+  return data;
 }

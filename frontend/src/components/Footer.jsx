@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconShield } from './Icons';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, APP_CONFIG } from '../config';
 
 export function Footer({ onSelectTab }) {
   const currentYear = 2026;
@@ -26,23 +26,23 @@ export function Footer({ onSelectTab }) {
             <button onClick={() => onSelectTab('map')}>Flood Map</button>
             <button onClick={() => onSelectTab('predict')}>Predict Risk</button>
             <button onClick={() => onSelectTab('reports')}>Community Reports</button>
-            <button onClick={() => onSelectTab('about')}>About</button>
+            <button onClick={() => onSelectTab('about')}>About & Safety</button>
           </div>
         </div>
 
         <div className="footer-right">
           <span className="footer-heading">Environment</span>
           <div className="footer-env-meta">
-            <span>Phase: <strong>Phase 1 Foundation</strong></span>
+            <span>Platform: <strong>Urban Flood Resilience System</strong></span>
             <span>API Host: <code>{API_BASE_URL}</code></span>
-            <span>Local Shell: Windows PowerShell</span>
+            <span>GIS: OpenStreetMap + Leaflet</span>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <span>© {currentYear} JalaRakshak AI Prototype • Built for urban disaster risk reduction</span>
-        <span className="footer-pill">Phase 1 Complete</span>
+        <span>© {currentYear} JalaRakshak AI • Built for urban disaster risk reduction</span>
+        <span className="footer-pill">Operational</span>
       </div>
     </footer>
   );

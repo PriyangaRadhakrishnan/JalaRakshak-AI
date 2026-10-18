@@ -4,12 +4,12 @@ import React from 'react';
  * Reusable badge to distinguish Phase 1 implemented features
  * from planned/placeholder features (Phase 2 & 3).
  */
-export function StatusBadge({ type = 'planned', text, phase = 'Phase 2' }) {
+export function StatusBadge({ type = 'planned', text, phase = 'Next Release' }) {
   if (type === 'active') {
     return (
       <span className="status-badge active-badge">
         <span className="badge-dot dot-green"></span>
-        {text || 'Active in Phase 1'}
+        {text || 'Active'}
       </span>
     );
   }
@@ -17,7 +17,7 @@ export function StatusBadge({ type = 'planned', text, phase = 'Phase 2' }) {
   return (
     <span className="status-badge planned-badge">
       <span className="badge-dot dot-amber"></span>
-      {text || `Feature in Development (${phase})`}
+      {text || `Planned (${phase})`}
     </span>
   );
 }

@@ -1,13 +1,14 @@
 import React from 'react';
-import { StatusBadge } from '../components/StatusBadge';
 import {
   IconShield,
   IconDroplet,
-  IconCheckCircle,
-  IconAlertTriangle
+  IconAlertTriangle,
+  IconMap,
+  IconTrendingUp,
+  IconUsers
 } from '../components/Icons';
 
-export function AboutView({ apiBaseUrl }) {
+export function AboutView() {
   return (
     <div className="view-container">
       {/* Hero Header */}
@@ -19,14 +20,89 @@ export function AboutView({ apiBaseUrl }) {
           <div>
             <h2 className="about-title">About JalaRakshak AI</h2>
             <p className="about-tagline">
-              Civic-Tech Hydrology Intelligence & Local Community Early Warning System
+              Local Urban Flood Resilience, Hydrological Modeling & Community Early Warning Platform
             </p>
           </div>
         </div>
       </div>
 
+      {/* General Civic Safety Protocols (Comprehensive Guide) */}
+      <section className="safety-guide-section">
+        <div className="safety-guide-header">
+          <IconAlertTriangle size={24} className="icon-orange" />
+          <div>
+            <h3 className="section-title">Urban Flood Safety Protocols & Action Guide</h3>
+            <span className="section-subtitle">Practical safety measures for residents, ward volunteers, and municipal teams</span>
+          </div>
+        </div>
+
+        <div className="safety-stages-grid">
+          {/* Stage 1: Before Flood */}
+          <div className="safety-stage-card">
+            <div className="stage-badge-row">
+              <span className="stage-num">STAGE 1</span>
+              <span className="stage-title">Before the Storm (Preparedness)</span>
+            </div>
+            <ul className="stage-list">
+              <li><strong>Clear Surface Drains:</strong> Clear compound drain grates and street gutters of plastic bags, dry foliage, and construction silt.</li>
+              <li><strong>Emergency Go-Bag:</strong> Pack 3 days of non-perishable food, potable water, essential medicines, flashlight, battery bank, and ID documents in sealed plastic bags.</li>
+              <li><strong>Identify High Ground:</strong> Locate neighborhood multi-story community shelters or designated municipal relief centers.</li>
+              <li><strong>Inspect Sump Plugs:</strong> Ensure non-return check valves on ground-floor sewage outfalls are closed to prevent backflow into homes.</li>
+            </ul>
+          </div>
+
+          {/* Stage 2: During Waterlogging */}
+          <div className="safety-stage-card alert-card">
+            <div className="stage-badge-row">
+              <span className="stage-num">STAGE 2</span>
+              <span className="stage-title">During Inundation (Active Hazards)</span>
+            </div>
+            <ul className="stage-list">
+              <li><strong>Turn Around Don't Drown:</strong> Never walk, swim, or drive through flooded roads. 15 cm of swift water can sweep adults; 30 cm floats cars.</li>
+              <li><strong>Beware Open Manholes:</strong> Stormwater pressure can dislodge heavy manhole covers. Submerged drains form deadly vortexes.</li>
+              <li><strong>Electrical Isolation:</strong> Switch off the main circuit breaker if floodwater approaches home wall sockets or meter boxes.</li>
+              <li><strong>Stay Clear of Transformers:</strong> Downed utility wires can electrify pooled water for meters around without sparking.</li>
+            </ul>
+          </div>
+
+          {/* Stage 3: After Waters Recede */}
+          <div className="safety-stage-card">
+            <div className="stage-badge-row">
+              <span className="stage-num">STAGE 3</span>
+              <span className="stage-title">After Waters Recede (Recovery)</span>
+            </div>
+            <ul className="stage-list">
+              <li><strong>Boil Drinking Water:</strong> Municipal tap networks and shallow borewells are frequently contaminated by sewer overflow. Boil water for 10 minutes.</li>
+              <li><strong>Check Structural Integrity:</strong> Inspect walls for subsidence cracks before entering waterlogged ground floors.</li>
+              <li><strong>Prevent Vector Diseases:</strong> Drain stagnant puddles to prevent dengue and malaria mosquito breeding.</li>
+              <li><strong>Report Blocked Culverts:</strong> Submit blocked drainage coordinates through JalaRakshak Community Reports.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Emergency Contacts Directory */}
+        <div className="emergency-contacts-strip">
+          <div className="contact-item">
+            <span className="contact-role">National Emergency Hotline</span>
+            <strong className="contact-num">112</strong>
+          </div>
+          <div className="contact-item">
+            <span className="contact-role">State Disaster Control Room</span>
+            <strong className="contact-num">1070</strong>
+          </div>
+          <div className="contact-item">
+            <span className="contact-role">District Collectorate Helpline</span>
+            <strong className="contact-num">1077</strong>
+          </div>
+          <div className="contact-item">
+            <span className="contact-role">Municipal Corporation Grievance</span>
+            <strong className="contact-num">1913</strong>
+          </div>
+        </div>
+      </section>
+
       <div className="about-grid">
-        {/* Mission & Problem Statement */}
+        {/* Urban Resilience Mission */}
         <div className="about-card">
           <div className="about-card-header">
             <IconDroplet className="icon-blue" size={20} />
@@ -34,119 +110,97 @@ export function AboutView({ apiBaseUrl }) {
           </div>
           <div className="about-card-body">
             <p>
-              Rapid urbanization, impervious surface growth, and extreme local precipitation events
-              frequently overwhelm municipal stormwater drainage networks.
+              Rapid urbanization, expanding concrete cover, and extreme short-duration cloudbursts
+              frequently overwhelm municipal stormwater drainage networks, resulting in rapid street inundation.
             </p>
             <p>
-              <strong>JalaRakshak AI</strong> is designed as a localized, open civic-tech platform that
-              empowers urban residents, disaster management volunteers, and municipal engineers with
-              hyper-local flood risk predictions and community-validated waterlogging alerts.
+              <strong>JalaRakshak AI</strong> is an open-source civic platform designed to safeguard urban catchments
+              by combining hydrological predictive modeling with ground-truthed citizen observations.
             </p>
             <div className="values-list">
               <div className="val-item">
                 <span className="val-bullet">✓</span>
-                <span><strong>Zero Paid APIs:</strong> Built using pure open-source toolchains (React, Flask, Scikit-learn).</span>
+                <span><strong>Civic First:</strong> Designed for urban residents, resident welfare associations, and ward engineers.</span>
               </div>
               <div className="val-item">
                 <span className="val-bullet">✓</span>
-                <span><strong>Community First:</strong> Marries algorithmic modeling with citizen ground verification.</span>
+                <span><strong>Ground Verification:</strong> Pairs statistical predictions with citizen observation.</span>
               </div>
               <div className="val-item">
                 <span className="val-bullet">✓</span>
-                <span><strong>Local Edge First:</strong> Runs locally on standard machines with minimal computational overhead.</span>
+                <span><strong>Open Toolchains:</strong> Zero paid cloud dependencies; operates cleanly on local edge hardware.</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Phase 1 Foundation Status */}
+        {/* How JalaRakshak Works */}
         <div className="about-card">
           <div className="about-card-header">
-            <IconCheckCircle className="icon-green" size={20} />
-            <h3 className="card-heading">Phase 1 Foundation Architecture</h3>
-            <StatusBadge type="active" text="Phase 1 Active" />
+            <IconTrendingUp className="icon-teal" size={20} />
+            <h3 className="card-heading">How the Platform Protects Wards</h3>
           </div>
           <div className="about-card-body">
-            <div className="stack-table">
-              <div className="stack-row">
-                <span className="stack-label">Frontend Framework</span>
-                <span className="stack-val">React 19 + Vite (Fast HMR)</span>
+            <div className="values-list">
+              <div className="val-item">
+                <span className="val-bullet">1.</span>
+                <span><strong>Hydrological Modeling:</strong> Analyzes 7 key basin features—antecedent rainfall, ground saturation, terrain elevation, and drainage operability.</span>
               </div>
-              <div className="stack-row">
-                <span className="stack-label">Styling & Design</span>
-                <span className="stack-val">Civic Blue/Teal Responsive CSS</span>
+              <div className="val-item">
+                <span className="val-bullet">2.</span>
+                <span><strong>Interactive GIS Spatial Map:</strong> Maps localized risk zones, canal junctions, and vulnerable transit underpasses.</span>
               </div>
-              <div className="stack-row">
-                <span className="stack-label">Backend Service</span>
-                <span className="stack-val">Python 3.13 + Flask Microservice</span>
+              <div className="val-item">
+                <span className="val-bullet">3.</span>
+                <span><strong>Citizen Crowdsourcing:</strong> Enables residents to report water depth and choked culvert grates in real time.</span>
               </div>
-              <div className="stack-row">
-                <span className="stack-label">Cross-Origin Protocol</span>
-                <span className="stack-val">Flask-CORS (Local API proxying)</span>
-              </div>
-              <div className="stack-row">
-                <span className="stack-label">Health Telemetry</span>
-                <span className="stack-val"><code>GET /api/health</code></span>
-              </div>
-              <div className="stack-row">
-                <span className="stack-label">Configured API Base</span>
-                <span className="stack-val"><code>{apiBaseUrl}</code></span>
+              <div className="val-item">
+                <span className="val-bullet">4.</span>
+                <span><strong>Civic Action Advisories:</strong> Translates predictive probabilities into clear, concrete municipal and citizen advisories.</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Roadmap & Progression */}
+        {/* Frequently Asked Questions (FAQ) */}
         <div className="about-card span-two">
           <div className="about-card-header">
-            <IconAlertTriangle className="icon-teal" size={20} />
-            <h3 className="card-heading">Project Roadmap & Engineering Phases</h3>
+            <IconUsers className="icon-blue" size={20} />
+            <h3 className="card-heading">Frequently Asked Questions</h3>
           </div>
           <div className="about-card-body">
-            <div className="roadmap-columns">
-              {/* Phase 1 Box */}
-              <div className="roadmap-phase-box current">
-                <div className="phase-header">
-                  <span className="phase-badge phase-active-badge">CURRENT</span>
-                  <h4>Phase 1: Foundation</h4>
-                </div>
-                <ul className="phase-bullets">
-                  <li>Clean monorepo structure (<code>frontend/</code> and <code>backend/</code>)</li>
-                  <li>Python virtual environment + <code>requirements.txt</code></li>
-                  <li>Responsive civic-tech dashboard layout with 5 core sections</li>
-                  <li>Flask health telemetry endpoint (<code>/api/health</code>)</li>
-                  <li>Configurable local API connection with latency monitoring</li>
-                  <li>PowerShell orchestration scripts and full test verification</li>
-                </ul>
+            <div className="limitations-grid">
+              <div className="limitation-box">
+                <h4>How do I report waterlogging in my neighborhood?</h4>
+                <p>
+                  Navigate to the <strong>Community Reports</strong> tab. Enter your ward name, description of the flooding,
+                  estimated water depth, and coordinates. Your submission is recorded immediately and plotted on the interactive Flood Map.
+                </p>
               </div>
 
-              {/* Phase 2 Box */}
-              <div className="roadmap-phase-box upcoming">
-                <div className="phase-header">
-                  <span className="phase-badge phase-planned-badge">NEXT</span>
-                  <h4>Phase 2: Hydrology ML & GIS</h4>
-                </div>
-                <ul className="phase-bullets">
-                  <li>Local Python runoff classification model (Scikit-learn)</li>
-                  <li>Interactive Leaflet / OpenStreetMap watershed overlay</li>
-                  <li>Simulated rainfall telemetry ingest and catchment gauge metrics</li>
-                  <li>SQLite persistence for local hazard reports</li>
-                  <li>Endpoints: <code>POST /api/predict</code> & <code>POST /api/reports</code></li>
-                </ul>
+              <div className="limitation-box">
+                <h4>What do the different marker colors indicate on the map?</h4>
+                <p>
+                  Pins with citizen icons (👥) indicate crowdsourced community reports. Colors correspond to reported severity:
+                  <strong> Red</strong> for Critical (&gt;45cm), <strong>Orange</strong> for High (30-45cm),
+                  <strong> Amber</strong> for Moderate (15-30cm), and <strong>Teal</strong> for Low (&lt;15cm).
+                </p>
               </div>
 
-              {/* Phase 3 Box */}
-              <div className="roadmap-phase-box upcoming">
-                <div className="phase-header">
-                  <span className="phase-badge phase-future-badge">FUTURE</span>
-                  <h4>Phase 3: Alert Broadcasts</h4>
-                </div>
-                <ul className="phase-bullets">
-                  <li>Automated civic broadcast alerts (SMS / Web Push notifications)</li>
-                  <li>Municipal ward dashboard for drainage clearing crews</li>
-                  <li>Offline-capable PWA support for low-connectivity storm scenarios</li>
-                  <li>Citizen photo verification and community moderation pipeline</li>
-                </ul>
+              <div className="limitation-box">
+                <h4>How does the Predict Risk tool evaluate flood probability?</h4>
+                <p>
+                  The predictor uses a trained Random Forest model that evaluates precipitation accumulation against terrain
+                  elevation, stormwater drainage operability, soil saturation, and tide levels to compute runoff likelihood.
+                </p>
+              </div>
+
+              <div className="limitation-box">
+                <h4>What should I do if floodwater begins entering my street?</h4>
+                <p>
+                  Never attempt to drive or walk through moving water. Disconnect electrical mains if water approaches floor sockets,
+                  move essentials to upper levels, and dial <strong>112</strong> or <strong>1070</strong> for emergency municipal assistance.
+                </p>
               </div>
             </div>
           </div>
